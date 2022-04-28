@@ -55,10 +55,12 @@ section{
 
 .welcomeHolder{
 
-    /* width: 30%; */
     margin-top: -7%;
-    /* margin-left: 2.5%; */
     border: solid black 1px;
+}
 
+dialog{
 
+    right: 38%;
+    top: 58%;
 }

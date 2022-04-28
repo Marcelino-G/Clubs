@@ -1,8 +1,15 @@
 let btnSignUp = document.querySelector("#signUp");
 let formName = document.querySelector("#name");
-let formMovie = document.querySelector("#movie")
-let formGrade = document.querySelectorAll('input[name = "grade"]')
-
+let formMovie = document.querySelector("#movie");
+let formGrade = document.getElementsByName("grade");
+let formClub = document.getElementsByName("club");
+let dialog = document.querySelector("dialog");
+let dialogContent = document.querySelectorAll("ul li")
+let noBtn = document.querySelector("#no");
+let yesBtn = document.querySelector("#yes");
+let grade = ""
+let club = ""
+let studentInfo = [];
 
 class Student{
 
@@ -14,38 +21,60 @@ class Student{
     }
 }
 
-async function s() {
+function checkedGrade() {
 
-    return new Promise ((resolve,reject) => {
+    for (let checked of formGrade){
 
-        for(let i = 0; i < formGrade.length; i++){
-
-            if(formGrade[i].checked){
-                let grade = formGrade.id
-                resolve(grade)
-            }
-            
+        if(checked.checked){
+            return(checked)
         }
-
-    })
-    
-
+    }
 }
 
-btnSignUp.addEventListener("click", async () => {
+function checkedClub() {
 
+    for (let checked of formClub){
 
-    let m = await s();
+        if(checked.checked){
+            return(checked)
+        }
+    }
+}
 
+function dialogReview (x,y) {
+    dialogContent[0].textContent = `Name: ${formName.value}`;
+    dialogContent[1].textContent = `Favorite Moive: ${formMovie.value}`;
+    dialogContent[2].textContent = `Grade: ${x.value}`;
+    dialogContent[3].textContent = `Club: ${y.value}`;
+}
 
+btnSignUp.addEventListener("click", () => {
 
-    let student = new Student(formName.value, formMovie.value, m);
-
-
-
+    grade = checkedGrade();
+    club = checkedClub();
 
     
-    console.log(student)
-    
+    dialogReview(grade,club);
+    dialog.showModal();
+})
 
+function clearForm(x,y) {
+
+    formName.value = null;
+    formMovie.value = null;
+    x.checked = null;
+    y.checked = null;
+}
+
+yesBtn.addEventListener("click", () => {
+
+    let student = new Student(formName.value, formMovie.value, grade.value, club.value);
+    studentInfo.push(student);
+    clearForm(grade,club);
+    dialog.close();
+})
+
+noBtn.addEventListener("click", () => {
+
+    dialog.close();
 })

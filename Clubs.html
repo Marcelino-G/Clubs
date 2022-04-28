@@ -43,19 +43,19 @@
             <fieldset class = "row justify-content-evenly">
                 <legend>Club</legend>
                 <div class = "col-5">
-                    <input id = "gamers" type = "radio" name = "club">
+                    <input id = "gamers" value = "gamers" type = "radio" name = "club">
                     <label for = "gamers">Gamers</label>
                 </div>
                 <div class = "col-5">
-                    <input id = "drama" type = "radio" name = "club">
+                    <input id = "drama" value = "drama" type = "radio" name = "club">
                     <label for = "drama">Drama</label>
                 </div>
                 <div class = "col-5">
-                    <input id = "sports" type = "radio" name = "club">
+                    <input id = "sports" value = "sports" type = "radio" name = "club">
                     <label for = "sports">Sports</label>
                 </div>
                 <div class = "col-5">
-                    <input id = "freehand" type = "radio" name = "club">
+                    <input id = "freehand" value = "freehand" type = "radio" name = "club">
                     <label for = "freehand">Freehand</label>
                 </div>
             </fieldset>
@@ -63,6 +63,8 @@
             <input id = "signUp" type = "button" value ="Sign Up" class = "col-8 mx-auto">
             
         </form>
+
+        
 
         <section class = "col-7 row text-center mt-2 py-1">
 
@@ -101,9 +103,17 @@
         <div class = "col-5 row welcomeHolder ">
             <img class = "col-4" src = "C:\Users\Marsea\Desktop\JavaScript Practice\Clubs\Logo1.png">
             <h1 class = "col">Welcome</h1>
-            
+            <dialog class = "position-relative w-25">
+                <p>Is this correct?</p>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <button id = "yes">Yes</button> <button id = "no">No</button>
+            </dialog>
         </div>
-
 
     </div>
 </body>
