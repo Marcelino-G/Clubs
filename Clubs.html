@@ -8,53 +8,53 @@
     <link href="C:\Users\Marsea\Desktop\JavaScript Practice\Clubs\Clubs.css" rel="stylesheet">
     <title>Clubs</title>
 </head>
-<body class = "bg-secondary">
-    <div class = "container bg-primary row justify-content-between mx-auto mt-2">
+<body>
+    <div id  ="containerGiant" class = "container-lg container-fluid row justify-content-between mx-auto mt-2 pb-2 gap-2 gap-md-0">
 
-        <form id = "form" class = "col-4 row text-center mt-2 py-1">
+        <form id = "form" class = "col-md-5 row text-center py-1 mt-2">
 
             <h1>Club Sign Up</h1>
-            <label for = "name" >Name</label>
-            <input id = "name" type = "text" class = "col-8 mx-auto" required>
+            <label for = "name">Name</label>
+            <input id = "name" type = "text" class = "col-8  mx-auto" required>
 
             <label for = "movie" >Favorite Movie</label>
             <input id = "movie" type = "text" class = "col-8 mx-auto" required>
 
             <fieldset class = "row justify-content-evenly">
                 <legend>Select Your Grade</legend>
-                <div class = "col-5">
+                <div class = "col-6">
                     <input id = "9th" value = "9th" type = "radio" name = "grade" required>
                     <label for = "9th" >9th</label>
                 </div>
-                <div class = "col-5">
+                <div class = "col-6">
                     <input id = "10th" value = "10th" type = "radio" name = "grade" required>
                     <label for = "10th" >10th</label>
                 </div>
-                <div class = "col-5">
+                <div class = "col-6">
                     <input id = "11th" value = "11th" type = "radio" name = "grade" required>
                     <label for = "11th" >11th</label>
                 </div>
-                <div class = "col-5">
+                <div class = "col-6">
                     <input id = "12th" value = "12th" type = "radio" name = "grade" required>
                     <label for = "12th" >12th</label>
                 </div>
             </fieldset>
 
-            <fieldset class = "row justify-content-evenly">
+            <fieldset class = "row justify-content-evenly mb-1">
                 <legend>Club</legend>
-                <div class = "col-5">
+                <div class = "col-6">
                     <input id = "gamers" value = "gamers" type = "radio" name = "club" required>
                     <label for = "gamers">Gamers</label>
                 </div>
-                <div class = "col-5">
+                <div class = "col-6">
                     <input id = "drama" value = "drama" type = "radio" name = "club" required>
                     <label for = "drama">Drama</label>
                 </div>
-                <div class = "col-5">
+                <div class = "col-6">
                     <input id = "sports" value = "sports" type = "radio" name = "club" required>
                     <label for = "sports">Sports</label>
                 </div>
-                <div class = "col-5">
+                <div class = "col-6">
                     <input id = "freehand" value = "freehand" type = "radio" name = "club" required>
                     <label for = "freehand">Freehand</label>
                 </div>
@@ -64,28 +64,31 @@
             
         </form>
 
-        <div id ="popUp" class = "position-absolute w-25 popUpDefault">
-            <button id = "exitStudentInfo">X</button>
-            <ul class = "infoPopUp">
+        <div id ="popUp" class = "position-absolute w-25 popUpDefault py-2">
+            <ul class = "infoPopUp text-center">
                 <li></li>
                 <li></li>
                 <li></li>
                 <li></li>
             </ul>
+            <div class = "row justify-content-around mt-1">
+                <button id = "exitStudentInfo" class= "col-4 text-center">Close</button>
+                <button class= "col-4 text-center">Remove</button>
+            </div>
         </div>
 
-        <section class = "col-7 row text-center mt-2 py-1">
+        <section id = "clubMemberSection" class = "col-md-7 row text-center mt-md-2 py-1">
 
             <h1>Club Members</h1>
 
-            <div class = "col-6 club">
+            <div class = "col-6 club mb-1 ">
                 <h2 class = "fs-5">Gamers</h2>
                 <ul class = "row memberList">
                   
                 </ul>
             </div>
 
-            <div class = "col-6 club">
+            <div class = "col-6 club mb-1">
                 <h2 class = "fs-5">Drama</h2>
                 <ul class = "row memberList">
                     
@@ -108,18 +111,21 @@
 
         </section>
 
-        <div class = "col-5 row welcomeHolder ">
-            <img class = "col-4" src = "C:\Users\Marsea\Desktop\JavaScript Practice\Clubs\Logo1.png">
-            <h1 class = "col">Welcome</h1>
+        <div class = "col-7 col-sm-6 col-md-5 row welcomeHolder">
+            <img class = " col-4" src = "C:\Users\Marsea\Desktop\JavaScript Practice\Clubs\Logo1.png">
+            <h1 class = "col-6 col-md-8 welcomeMessage">Welcome</h1>
             <dialog class = "position-relative w-25">
                 <p>Is this correct?</p>
-                <ul class = "infoReview">
+                <ul class = "infoReview text-center">
                     <li></li>
                     <li></li>
                     <li></li>
                     <li></li>
                 </ul>
-                <button id = "yes">Yes</button> <button id = "no">No</button>
+                <div class = "row justify-content-around mt-1">
+                    <button id = "yes" class = "col-5">Yes</button> 
+                    <button id = "no" class = "col-5">No</button>
+                </div>
             </dialog>
         </div>
 
