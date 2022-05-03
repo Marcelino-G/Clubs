@@ -1,13 +1,11 @@
 body{
 
     background-color: #cdca8a;
-
 }
 
 #containerGiant{
 
     background-color: #edffe7;
-
 }
 
 
@@ -15,42 +13,29 @@ form{
 
     background-color: #9ddddb;
     max-height: 70vh;
-
 }
 
 section{
 
-
     background-color: #9ddddb;
-
 }
-
-/* ul{
-
-    border: solid pink 1px;
-
-} */
 
 h1{
 
     border: solid black 1px;
     background-color: #e1cbdc;
-
 }
 
 li{
 
     border: solid black 1px;
     background-color: #f5bbbb;
-
 }
 
 .club{
 
     min-height: 40%;
     border: solid black 1px;
-
-
 }
 
 ul, li {
@@ -58,14 +43,11 @@ ul, li {
     list-style: none;
     margin: 0;
     padding: 0;
-
-
 }
 
 section{
 
     min-height: 85vh;
-
 }
 
 .welcomeHolder{
@@ -74,31 +56,22 @@ section{
     background-color: #9ddddb;
 }
 
-dialog{
+#popUp{
 
-    right: 38%;
-    top: 58%;
-}
-
-.popUpDefault{
-
-    left: 19%;
     display: none;
     background-color: #a96e9d;
-
+    position: absolute;
 }
 
 .welcomeMessage{
 
     background-color: transparent;
     border: none;
-
 }
 
 dialog{
 
     background-color: #a96e9d;
-
 }
 
 @media screen and (max-width:767px){
@@ -106,13 +79,17 @@ dialog{
     .welcomeHolder{
 
         margin: 0;
-
     }
 
     #form, #clubMemberSection, .welcomeHolder{
 
         margin: 0 auto;
+    }
 
+    #popUp{
+
+        position: sticky;
+        top: 5px;
     }
     
 }
