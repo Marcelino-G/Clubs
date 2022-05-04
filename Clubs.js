@@ -17,6 +17,9 @@ let dramaCount = 0;
 let sportsCount = 0;
 let freehandCount = 0;
 let studentInfo = [];
+let capName = "";
+let capMoive = "";
+let btnRemoveStudentInfo = document.getElementById("removeStudentInfo");
 
 let memberList = document.getElementsByClassName("memberList");
 
@@ -53,13 +56,32 @@ function checkedClub() {
 
 function dialogReview (x,y) {
 
-    dialogContent[0].textContent = `Name: ${formName.value}`;
-    dialogContent[1].textContent = `Favorite Moive: ${formMovie.value}`;
+    capName = formName.value
+    capName = capName.toLowerCase()
+                                .split(" ")
+                                .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+                                .join(" ")
+    capMoive = formMovie.value
+    capMoive = capMoive.toLowerCase()
+                                    .split(" ")
+                                    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+                                    .join(" ")
+
+    dialogContent[0].textContent = `Name: ${capName}`;
+    dialogContent[1].textContent = `Favorite Moive: ${capMoive}`;
     dialogContent[2].textContent = `Grade: ${x.value}`;
     dialogContent[3].textContent = `Club: ${y.value}`;
 }
 
 btnSignUp.addEventListener("click", () => {
+
+    if(formName.value.trim() === ""){
+        alert("What is your name?")
+        return
+    } else if(formMovie.value.trim() === ""){
+        alert("What is your favorite movie?")
+        return
+    }
 
     grade = checkedGrade();
     club = checkedClub();
@@ -79,7 +101,13 @@ function clearForm(x,y) {
 
 yesBtn.addEventListener("click", () => {
 
-    let student = new Student(formName.value, formMovie.value, grade.value, club.value);
+    let student = new Student(capName, capMoive, grade.value, club.value);
+   
+    if (studentInfo.find(findThisStudentInArray)){
+        alert("Name already taken. Try adding your last name initial.")
+        return
+    }
+
     studentInfo.push(student);
     clearForm(grade,club);
     dialog.close();
@@ -100,21 +128,45 @@ function placement(x) {
     let clubName = x[i]["club"]
     
     switch (clubName){
-        case "gamers": 
+        case "Gamers": 
+            if(gamersCount === 6){
+                alert("sorry, club is full")
+                x.pop();
+                return
+            }
             createListElement(x,0);
             i++;
+            gamersCount++
             break;
-        case "drama":
+        case "Drama":
+            if(dramaCount === 6){
+                alert("sorry, club is full")
+                x.pop();
+                return
+            }
             createListElement(x,1);
             i++;
+            dramaCount++
             break;
-        case "sports":
+        case "Sports":
+            if(sportsCount === 6){
+                alert("sorry, club is full")
+                x.pop();
+                return
+            }
             createListElement(x,2);
             i++;
+            sportsCount++
             break;
-        case "freehand":
+        case "Freehand":
+            if(freehandCount === 6){
+                alert("sorry, club is full")
+                x.pop();
+                return
+            }
             createListElement(x,3);
             i++;
+            freehandCount++
             break;
     }
 }
@@ -124,6 +176,7 @@ function createListElement(x,y) {
     let newLi = document.createElement("li");
     newLi.classList.add("col-6")
     newLi.classList.add("student")
+    newLi.classList.add("fw-bold")
     let liContent = document.createTextNode(`${x[i]["name"]}`)
     newLi.appendChild(liContent);
     memberList[y].insertAdjacentElement("afterbegin", newLi)
@@ -138,14 +191,17 @@ document.addEventListener("click", e => {
     }
     text = target.textContent
     
-    let clickedStudent = (studentInfo.find(findThisStudent))
+    let clickedStudent = (studentInfo.find(findThisStudentHTML))
     makePopUpContent(clickedStudent)
     
-    console.log(clickedStudent["movie"])
 })
 
-function findThisStudent(student) {
+function findThisStudentHTML(student) {
     return student.name === text;
+}
+
+function findThisStudentInArray(student){
+    return student.name === capName;
 }
 
 let popUp = document.getElementById("popUp")
@@ -164,5 +220,11 @@ function makePopUpContent(x) {
 btnExitStudentPopUp.addEventListener("click", () => {
 
     popUp.style.display = "none"
+
+})
+
+btnRemoveStudentInfo.addEventListener("click", () => {
+
+    console.log(target)
 
 })
