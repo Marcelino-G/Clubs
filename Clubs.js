@@ -11,11 +11,11 @@ let noBtn = document.querySelector("#no");
 let yesBtn = document.querySelector("#yes");
 let grade = ""
 let club = ""
-let i = 0;
-let gamersCount = 0;
-let dramaCount = 0;
-let sportsCount = 0;
-let freehandCount = 0;
+let countArrayLength = 0;
+let countGamers = 0;
+let countDrama = 0;
+let countSports = 0;
+let countFreehand = 0;
 let studentInfo = [];
 let capName = "";
 let capMoive = "";
@@ -112,6 +112,7 @@ yesBtn.addEventListener("click", () => {
     clearForm(grade,club);
     dialog.close();
     placement(studentInfo);
+    console.log(studentInfo)
 })
 
 noBtn.addEventListener("click", () => {
@@ -125,48 +126,48 @@ form.addEventListener("submit", (e) => {
 
 function placement(x) {
     
-    let clubName = x[i]["club"]
+    let clubName = x[countArrayLength]["club"]
     
     switch (clubName){
         case "Gamers": 
-            if(gamersCount === 6){
+            if(countGamers === 6){
                 alert("sorry, club is full")
                 x.pop();
                 return
             }
             createListElement(x,0);
-            i++;
-            gamersCount++
+            countArrayLength++;
+            countGamers++
             break;
         case "Drama":
-            if(dramaCount === 6){
+            if(countDrama === 6){
                 alert("sorry, club is full")
                 x.pop();
                 return
             }
             createListElement(x,1);
-            i++;
-            dramaCount++
+            countArrayLength++;
+            countDrama++
             break;
         case "Sports":
-            if(sportsCount === 6){
+            if(countSports === 6){
                 alert("sorry, club is full")
                 x.pop();
                 return
             }
             createListElement(x,2);
-            i++;
-            sportsCount++
+            countArrayLength++;
+            countSports++
             break;
         case "Freehand":
-            if(freehandCount === 6){
+            if(countFreehand === 6){
                 alert("sorry, club is full")
                 x.pop();
                 return
             }
             createListElement(x,3);
-            i++;
-            freehandCount++
+            countArrayLength++;
+            countFreehand++
             break;
     }
 }
@@ -177,14 +178,17 @@ function createListElement(x,y) {
     newLi.classList.add("col-6")
     newLi.classList.add("student")
     newLi.classList.add("fw-bold")
-    let liContent = document.createTextNode(`${x[i]["name"]}`)
+    let liContent = document.createTextNode(`${x[countArrayLength]["name"]}`)
     newLi.appendChild(liContent);
     memberList[y].insertAdjacentElement("afterbegin", newLi)
 }
 
+let target  = "";
+let text = ""
+
 document.addEventListener("click", e => {
 
-    let target = e.target
+    target = e.target
 
     if (!target.classList.contains("student")){
         return
@@ -225,6 +229,29 @@ btnExitStudentPopUp.addEventListener("click", () => {
 
 btnRemoveStudentInfo.addEventListener("click", () => {
 
-    console.log(target)
+    for(let i = 0; i < studentInfo.length; i++){
 
+        if (studentInfo[i]["name"] === text){
+            let clubName = studentInfo[i]["club"]
+            switch(clubName){
+                case "Gamers":
+                    countGamers --;
+                    break;
+                case "Drama":
+                    countDrama --;
+                    break;
+                case "Sports":
+                    countSports --;
+                    break;
+                case "Freehand":
+                    countFreehand --;
+                    break;
+            }
+            studentInfo.splice(i, 1)
+        }
+    }
+    target.remove();
+    countArrayLength --;
+    popUp.style.display = "none"
+    console.log(studentInfo)
 })

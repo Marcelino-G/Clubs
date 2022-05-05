@@ -74,6 +74,12 @@ dialog{
     background-color: #a96e9d;
 }
 
+.student{
+
+    cursor: pointer;
+
+}
+
 @media screen and (max-width:767px){
 
     .welcomeHolder{
