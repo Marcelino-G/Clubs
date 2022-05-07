@@ -1,14 +1,17 @@
-let btnSignUp = document.querySelector("#signUp");
-let form = document.querySelector("#form");
+const btnSignUp = document.querySelector("#signUp");
+const btnNo = document.querySelector("#no");
+const btnYes = document.querySelector("#yes");
+const btnRemoveStudentInfo = document.getElementById("removeStudentInfo");
+
+const form = document.querySelector("#form");
 let formName = document.querySelector("#name");
 let formMovie = document.querySelector("#movie");
 let formGrade = document.getElementsByName("grade");
 let formClub = document.getElementsByName("club");
-let dialog = document.querySelector("dialog");
+const dialog = document.querySelector("dialog");
 let dialogContent = document.querySelectorAll(".infoReview li")
 let popUpContent = document.querySelectorAll(".infoPopUp li")
-let noBtn = document.querySelector("#no");
-let yesBtn = document.querySelector("#yes");
+
 let grade = ""
 let club = ""
 let countArrayLength = 0;
@@ -16,12 +19,12 @@ let countGamers = 0;
 let countDrama = 0;
 let countSports = 0;
 let countFreehand = 0;
-let studentInfo = [];
+let arrayStudentInfo = [];
 let capName = "";
-let capMoive = "";
-let btnRemoveStudentInfo = document.getElementById("removeStudentInfo");
+let capMovie = "";
 
-let memberList = document.getElementsByClassName("memberList");
+
+const memberList = document.getElementsByClassName("memberList");
 
 
 class Student{
@@ -34,9 +37,9 @@ class Student{
     }
 }
 
-function checkedGrade() {
+function checkedRadio(x) {
 
-    for (let checked of formGrade){
+    for (let checked of x){
 
         if(checked.checked){
             return(checked)
@@ -44,31 +47,24 @@ function checkedGrade() {
     }
 }
 
-function checkedClub() {
+function capitalize(x) {
 
-    for (let checked of formClub){
-
-        if(checked.checked){
-            return(checked)
-        }
-    }
+    return x.toLowerCase()
+        .split(" ")
+        .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+        .join(" ")
 }
 
 function dialogReview (x,y) {
 
     capName = formName.value
-    capName = capName.toLowerCase()
-                                .split(" ")
-                                .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-                                .join(" ")
-    capMoive = formMovie.value
-    capMoive = capMoive.toLowerCase()
-                                    .split(" ")
-                                    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-                                    .join(" ")
+    capName = capitalize(capName)
+
+    capMovie = formMovie.value
+    capMovie = capitalize(capMovie)
 
     dialogContent[0].textContent = `Name: ${capName}`;
-    dialogContent[1].textContent = `Favorite Moive: ${capMoive}`;
+    dialogContent[1].textContent = `Favorite Moive: ${capMovie}`;
     dialogContent[2].textContent = `Grade: ${x.value}`;
     dialogContent[3].textContent = `Club: ${y.value}`;
 }
@@ -83,8 +79,8 @@ btnSignUp.addEventListener("click", () => {
         return
     }
 
-    grade = checkedGrade();
-    club = checkedClub();
+    grade = checkedRadio(formGrade);
+    club = checkedRadio(formClub);
 
     
     dialogReview(grade,club);
@@ -99,32 +95,33 @@ function clearForm(x,y) {
     y.checked = null;
 }
 
-yesBtn.addEventListener("click", () => {
+btnYes.addEventListener("click", () => {
 
-    let student = new Student(capName, capMoive, grade.value, club.value);
+    let student = new Student(capName, capMovie, grade.value, club.value);
    
-    if (studentInfo.find(findThisStudentInArray)){
+    if (arrayStudentInfo.find(findThisStudentInArray)){
         alert("Name already taken. Try adding your last name initial.")
         return
     }
 
-    studentInfo.push(student);
+    arrayStudentInfo.push(student);
     clearForm(grade,club);
     dialog.close();
-    placement(studentInfo);
-    console.log(studentInfo)
+    htmlClubPlacement(arrayStudentInfo);
+    console.log(arrayStudentInfo)
 })
 
-noBtn.addEventListener("click", () => {
+btnNo.addEventListener("click", () => {
 
     dialog.close();
 })
 
 form.addEventListener("submit", (e) => {
+    
     e.preventDefault();
 });
 
-function placement(x) {
+function htmlClubPlacement(x) {
     
     let clubName = x[countArrayLength]["club"]
     
@@ -195,7 +192,7 @@ document.addEventListener("click", e => {
     }
     text = target.textContent
     
-    let clickedStudent = (studentInfo.find(findThisStudentHTML))
+    let clickedStudent = (arrayStudentInfo.find(findThisStudentHTML))
     makePopUpContent(clickedStudent)
     
 })
@@ -208,8 +205,8 @@ function findThisStudentInArray(student){
     return student.name === capName;
 }
 
-let popUp = document.getElementById("popUp")
-let btnExitStudentPopUp = document.getElementById("exitStudentInfo");
+const popUp = document.getElementById("popUp")
+const btnExitStudentPopUp = document.getElementById("exitStudentInfo");
 
 function makePopUpContent(x) {
 
@@ -229,10 +226,10 @@ btnExitStudentPopUp.addEventListener("click", () => {
 
 btnRemoveStudentInfo.addEventListener("click", () => {
 
-    for(let i = 0; i < studentInfo.length; i++){
+    for(let i = 0; i < arrayStudentInfo.length; i++){
 
-        if (studentInfo[i]["name"] === text){
-            let clubName = studentInfo[i]["club"]
+        if (arrayStudentInfo[i]["name"] === text){
+            let clubName = arrayStudentInfo[i]["club"]
             switch(clubName){
                 case "Gamers":
                     countGamers --;
@@ -247,11 +244,11 @@ btnRemoveStudentInfo.addEventListener("click", () => {
                     countFreehand --;
                     break;
             }
-            studentInfo.splice(i, 1)
+            arrayStudentInfo.splice(i, 1)
         }
     }
     target.remove();
     countArrayLength --;
     popUp.style.display = "none"
-    console.log(studentInfo)
+    console.log(arrayStudentInfo)
 })
