@@ -8,34 +8,34 @@ body{
     background-color: #edffe7;
 }
 
-
 form{
 
-    background-color: #9ddddb;
     max-height: 70vh;
 }
 
-section{
+section, form, .welcomeHolder{
 
     background-color: #9ddddb;
 }
 
 h1{
 
-    border: solid black 1px;
     background-color: #e1cbdc;
 }
 
 li{
 
-    border: solid black 1px;
     background-color: #f5bbbb;
+}
+
+h1, li, .club{
+
+    border: solid black 1px;
 }
 
 .club{
 
     min-height: 40%;
-    border: solid black 1px;
 }
 
 ul, li {
@@ -53,7 +53,6 @@ section{
 .welcomeHolder{
 
     margin-top: -7%;
-    background-color: #9ddddb;
 }
 
 #popUp{
@@ -74,10 +73,19 @@ dialog{
     background-color: #a96e9d;
 }
 
-.student{
+.radio input, .radio label, .student{
 
     cursor: pointer;
+}
 
+.student{
+
+    opacity: .80;
+}
+
+.student:hover{
+
+    opacity: 1;
 }
 
 @media screen and (max-width:767px){
@@ -96,6 +104,5 @@ dialog{
 
         position: sticky;
         top: 5px;
-    }
-    
+    }   
 }
