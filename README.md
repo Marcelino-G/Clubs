@@ -10,7 +10,7 @@
  This project was made to demonstrate different JavaScript concepts working together in a clean and efficient way. Since it deals with adding, removing, and grabbing data, it became the perfect opportunity to showcase such methods in order to prevent errors.
  
 ## How
- The languages used to make this project were *HTML*, *CSS*(***Bootstrap***), and *JavaScript*. The logo was made and edited with *GIMP* and *Inkscape*.
+ The languages used to make this project were *HTML*, *CSS*(***Bootstrap***), and *JavaScript*. The logo was made and edited with ***GIMP*** and ***Inkscape***.
  
 ## Page Description
 
