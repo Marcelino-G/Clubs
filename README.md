@@ -7,7 +7,7 @@
  ***Clubs*** is a form for students to fill out when they sign up for a club. After completion, one can monitor and manage the clubs by removing students and pulling up student information. 
  
 ## Why
- This project was made to demonstrate different JavaScript concepts working together in a clean and efficient way. Since it deals with adding, removing, and grabbing data, it became the perfect opportunity to showcase different JavaScript concepts in order to prevent errors.
+ This project was made to demonstrate different JavaScript concepts working together in a clean and efficient way. Since it deals with adding, removing, and grabbing data, it became the perfect opportunity to showcase such methods in order to prevent errors.
  
 ## How
  The languages used to make this project were *HTML*, *CSS*(***Bootstrap***), and *JavaScript*. The logo was made and edited with *GIMP* and *Inkscape*.
