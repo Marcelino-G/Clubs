@@ -1,17 +1,19 @@
 # Clubs
 
-## Site
- https://marcelino-g.github.io/Clubs/
- 
 ## What
- ***Clubs*** is a form for students to fill out when they sign up for a club. After completion, one can monitor and manage the clubs by removing students and pulling up student information. 
+ ***Clubs*** is a form for students to fill out when they sign into a club for placement. After completion, one can monitor and manage the clubs by removing students and pulling up student information. 
+
+## Sources
+The logo was made and edited using ***GIMP*** and ***Inkscape***.
+ - GIMP: https://www.gimp.org/
+ - Inkscape: https://inkscape.org/
  
-## Why
- This project was made to demonstrate different JavaScript concepts working together in a clean and efficient way. Since it deals with adding, removing, and grabbing data, it became the perfect opportunity to showcase such methods in order to prevent errors.
- 
-## How
- The languages used to make this project were *HTML*, *CSS* (***Bootstrap***), and *JavaScript*. The logo was made and edited with ***GIMP*** and ***Inkscape***.
- 
+## Instructions
+You are presented with a form and organization board. Filling out all required fields of the form will place you under one of the club categories on the organization board. Clicking on a name will allow you to review the student's informarion and give you the option to remove them from the club.  
+
+## Site
+https://marcelino-g.github.io/Clubs/
+
 ## Page Description
 
  - Desktop View
@@ -25,13 +27,11 @@
 ## Completed Pictures
  - Desktop View
  
- ![completed desktop view](./Rough%20draft%20and%20final%20pics/desktopView.png)
-
+ <img width="450" src="./Rough%20draft%20and%20final%20pics/desktopView.png" />
+ 
  - Mobile View
+ 
+ <img width="450" src="./Rough%20draft%20and%20final%20pics/mobileView.png" />
 
- ![completed mobile view](./Rough%20draft%20and%20final%20pics/mobileView.png)
 
-## Sources
- - GIMP: https://www.gimp.org/
- - Inkscape: https://inkscape.org/
  
