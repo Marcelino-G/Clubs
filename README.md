@@ -2,6 +2,10 @@
 
 ## What
  ***Clubs*** is a form for students to fill out when they sign into a club for placement. After completion, one can monitor and manage the clubs by removing students and pulling up student information. 
+ 
+## Why
+- To practice the implementation of multiple JavaScript concepts into one project. Concepts that work heavily with HTML's DOM and form data, arrays, and error handling.
+- To create a user interface for students and mentors to use with ease. A interface I wish was available to me when I worked for an after school program. 
 
 ## Sources
 The logo was made and edited using ***GIMP*** and ***Inkscape***.
